@@ -1,0 +1,15 @@
+<div [formGroup]="groupName">
+  <div class="wrapper-checkbox">
+    <label>
+      <input
+        type="checkbox"
+        [name]="name"
+        [formControlName]="controlName"
+        (change)="onCheckChange($event)"
+      />
+    </label>
+    <div> 
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

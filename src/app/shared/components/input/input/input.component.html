@@ -1,0 +1,38 @@
+<div [formGroup]="groupName">
+  <div class="wrapper-input">
+    <label>
+      <div class="label">{{ text }}</div>
+      <div>
+        <input
+          class="input"
+          [placeholder]="placeHolder"
+          [name]="name"
+          [formControlName]="controlName"
+          [helpers]="helpers"
+          [ngClass]="
+            control[controlName].invalid &&
+            (control[controlName].dirty || control[controlName].touched)
+              ? 'alert'
+              : ''
+          "
+        />
+      </div>
+    </label>
+    <small>{{ helpers }}</small>
+    <ng-container
+      class="alert"
+      *ngIf="
+        control[controlName].invalid &&
+        (control[controlName].dirty || control[controlName].touched)
+      "
+    >
+      @for(item of errorDetails; track item.type ){ @if(item.type ===
+      errorType[0]){
+      <div class="error">
+        {{ item.message }}
+      </div>
+      } }
+    </ng-container>
+    <ngContent></ngContent>
+  </div>
+</div>

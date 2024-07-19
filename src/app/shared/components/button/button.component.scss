@@ -1,0 +1,22 @@
+.button {
+    padding:0.7rem 0.7rem;
+    background-color: rgb(49, 98, 233);
+    outline: none;
+    border: none;
+    color: #fff;
+    border-radius: 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.wrapper-label{
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.disabled{
+    background-color: rgb(129, 161, 248);
+}

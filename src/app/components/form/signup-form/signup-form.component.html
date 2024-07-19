@@ -1,0 +1,44 @@
+<div class="wrapper-signup-form">
+  <h3>Please fill this form below</h3>
+
+  <form class="form-signup" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+    @for (item of inputInformation; track item.label){
+        @if(item.name !== 'password' && item.name !== 'confirmPassword'){
+            <app-input
+            [text]="item.label"
+            [placeHolder]="item.placeholder"
+            [name]="item.name"
+            [controlName]="item.name"
+            [groupName]="signUpForm"
+            [error]="errorForm"
+            [errorMessage]="errorMessage"
+            [helpers]="item.helpers"
+          />
+        }@else{
+            <app-password
+            [text]="item.label"
+            [name]="item.name"
+            [placeHolder]="item.placeholder"
+            [controlName]="item.name"
+            [groupName]="signUpForm"
+            [error]="errorForm"
+            [helpers]="item.helpers"
+            />
+        }
+   
+    }
+    <app-checkbox
+      [name]="checkBoxConsent.name"
+      [controlName]="checkBoxConsent.name"
+      [groupName]="signUpForm"
+      (change)="onCheckbox($event)"
+    >
+      <p>I consent under aggreement's</p>
+    </app-checkbox>
+    <app-button
+      [label]="submit.label"
+      [type]="submit.type"
+      [disabled]="buttonDisabled"
+    />
+  </form>
+</div>

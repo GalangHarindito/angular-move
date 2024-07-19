@@ -1,0 +1,31 @@
+<div class="wrapper-signin-form">
+  <div *ngIf="error$" class="alert-position">
+    <app-alert [class]="danger" [message]="(error$ | async) || ''" />
+  </div>
+  <h3>Sign In</h3>
+  <form class="form-signin" [formGroup]="signInForm" (submit)="onSubmit(value)">
+    @for(item of signInData; track item.name){ @if(item.name === "email"){
+    <app-input
+      [text]="item.label"
+      [placeHolder]="item.placeholder"
+      [name]="item.name"
+      [controlName]="item.name"
+      [groupName]="signInForm"
+    />
+    }@else{
+    <app-password
+      [text]="item.label"
+      [name]="item.name"
+      [placeHolder]="item.placeholder"
+      [controlName]="item.name"
+      [groupName]="signInForm"
+    />
+    } }
+    <app-button
+      [label]="submit.label"
+      [type]="submit.type"
+      [disabled]="buttonDisabled()"
+      [loading]="(loading$ | async) || false"
+    />
+  </form>
+</div>

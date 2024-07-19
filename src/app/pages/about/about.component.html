@@ -1,0 +1,10 @@
+<h2>This is about</h2>
+<p>My name is <strong>Yusuf</strong> and I am</p>
+<a routerLink="founders">To Founders</a>
+
+<Company
+  [dataFromParent]="dataParent"
+  (dataShared)="addNewData($event)"
+></Company>
+
+<router-outlet></router-outlet>

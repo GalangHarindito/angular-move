@@ -1,0 +1,15 @@
+.wrapper-signup-form{
+    background-color: rgb(247, 247, 247);
+    padding: 3rem;
+    display: grid;
+    place-content: center;
+    width: fit-content;
+    border-radius: 1rem;
+    .form-signup {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    
+    }
+}
+

@@ -1,0 +1,11 @@
+<p>company works!</p>
+<p>tessttting</p>
+<ng-container *ngIf="hide">
+  <section class="dataParent">
+    <h2>🫠{{ dataFromParent.name }}</h2>
+    <h2>😆{{ dataFromParent.age }}</h2>
+  </section>
+</ng-container>
+
+<app-button [label]="label" (click)="onClick(label)" />
+<app-button [label]="buttonHide" (click)="onHide()" />

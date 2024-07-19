@@ -1,0 +1,18 @@
+<section>
+  <button
+    class="button"
+    [type]="type"
+    (click)="onClickButton()"
+    [disabled]="disabled"
+    [ngClass]="disabled ? 'disabled' : ''"
+  >
+    <div class="wrapper-label">
+      <div *ngIf="!loading; else templateLoading">
+        {{ label }}
+      </div>
+      <ng-template #templateLoading>
+        Loading <app-spinner></app-spinner>
+      </ng-template>
+    </div>
+  </button>
+</section>

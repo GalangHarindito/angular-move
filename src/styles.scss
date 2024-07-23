@@ -1,9 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 @font-face {
-    font-family: 'poppins';
-    src: url('/public/assets/font/Poppins-Regular.ttf') format('truetype');
+  font-family: "poppins";
+  src: url("./assets/fonts/Poppins-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 
 body {
-    font-family: 'poppins', sans-serif;
+  font-family: "poppins", sans-serif;
 }

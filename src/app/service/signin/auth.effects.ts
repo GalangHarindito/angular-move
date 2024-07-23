@@ -6,6 +6,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { hideLoading, showLoading, signIn, signInFailure, signInSuccess } from '../../store/action/auth.action';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthEffects {
@@ -13,7 +14,8 @@ export class AuthEffects {
     private http: HttpClient,
     private store: Store,
     private actions$: Actions,
-    private cookiesService: CookieService
+    private cookiesService: CookieService,
+    private router: Router
   ) {}
 
   login$ = createEffect(() =>
@@ -36,6 +38,7 @@ export class AuthEffects {
         tap(({access_token, refresh_token}) => {
             this.cookiesService.set('session', access_token, undefined, '/')
             this.cookiesService.set('refresh', refresh_token, undefined, '/')
+            this.router.navigate(['/profile'])
         })
     ),
     { dispatch: false}

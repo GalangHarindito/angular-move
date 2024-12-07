@@ -20,6 +20,6 @@ export class AuthService {
   }
 
   fetchUser(data: UserModel ){
-    return this.http.post('https://api.escuelajs.co/api/v1/auth/login', data)
+    return this.http.post('http://localhost:3000/api/auth/signin', data)
   }
 }

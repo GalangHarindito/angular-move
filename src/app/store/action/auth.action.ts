@@ -1,4 +1,5 @@
 import { createAction, props } from '@ngrx/store';
+import { Session } from '../../service/signin/model';
 
 export const signIn = createAction(
   '[Auth] Sign In',
@@ -6,7 +7,7 @@ export const signIn = createAction(
 );
 export const signInSuccess = createAction(
   '[Auth] Sign In Success',
-  props<{ access_token: string; refresh_token: string }>()
+  props<{ access_token: string; refresh_token: string; session: Session }>()
 );
 export const signInFailure = createAction(
   '[Auth] Sign In Failure',

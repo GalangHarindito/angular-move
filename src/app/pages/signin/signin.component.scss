@@ -1,4 +1,6 @@
 .wrapper-signin {
+  background-image: img('assets/images/bg_signin.jpg');
+  background-repeat: no-repeat;
     .title{
         text-align: center;
         font-size: 3rem;
@@ -7,4 +9,5 @@
     display: grid;
     place-items: center;
   }
+  
 }

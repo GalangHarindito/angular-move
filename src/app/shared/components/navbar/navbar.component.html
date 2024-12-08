@@ -1,0 +1,27 @@
+<nav class="navbar">
+  <div class="container">
+    <div class="navbar-img">
+        <a routerLink="/home">
+            <img
+              ngSrc="/assets/logo/logo.png"
+              alt="logo"
+              width="140"
+              height="60"
+              priority
+            />
+          </a>
+    </div>
+
+
+    <ul class="wrapper-child-navbar">
+      @for(menu of navbarBlockActive; track menu.id){
+      <li>
+        <a [routerLink]="menu.route" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">{{
+          menu.title
+        }}</a>
+      </li>
+
+      }
+    </ul>
+  </div>
+</nav>

@@ -19,14 +19,14 @@ export class HomeComponent {
   label: string = 'test'
   dataFromChild!:string 
 
-  constructor(private postsService: PostsService) {}
+  constructor(public postsService: PostsService) {}
 
   ngOnInit() {
     this.postsService.getPost().subscribe({
-      next: (res) => {
+      next: (res:any) => {
         this.res = res;
       },
-      error: (error) => {
+      error: (error:any) => {
         this.errorMessage = error.message;
       },
     });

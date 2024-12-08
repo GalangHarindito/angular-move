@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, DoCheck, forwardRef } from '@angular/core';
+import { Component, DoCheck, EventEmitter, forwardRef, Output } from '@angular/core';
 import { InputComponent } from '../../../shared/components/input/input/input.component';
 import { InputModel, ButtonSignUp, SignUpForm, CheckBoxConsent } from './model';
 import {
@@ -14,6 +14,10 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
 import { ConfirmPasswordValidator } from '../../../utils/validator';
 import { CheckboxComponent } from '../../../shared/components/checkbox/checkbox.component';
 import { PasswordComponent } from '../../../shared/components/input/password/password.component';
+import { UserRegister } from '../../../service/signup/model';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { UserSignUpState } from '../../../utils/app.state';
 
 @Component({
   selector: 'app-signup-form',
@@ -48,8 +52,10 @@ export class SignupFormComponent {
   checked: boolean = false;
   buttonDisabled: boolean = true;
   checkBoxDisabled: boolean = true;
+  loading$: Observable<boolean>;
+  @Output() dataSignUp = new EventEmitter<UserRegister>();
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private store: Store<UserSignUpState>) {
     this.signUpForm = this.formBuilder.group(
       {
         firstName: [
@@ -72,6 +78,7 @@ export class SignupFormComponent {
       },
       { validator: ConfirmPasswordValidator.MatchPassword }
     );
+    this.loading$ = this.store.select((state) => state.loading);
   }
 
   get value(): SignUpForm {
@@ -146,11 +153,13 @@ export class SignupFormComponent {
   }
 
   onSubmit() {
-    console.log(this.signUpForm.value);
-    console.log(this.signUpForm);
-    console.log(this.errorMessage);
     if (this.signUpForm.invalid) {
       this.errorForm = true;
     }
+    const {confirmPassword: _, ...data} = this.signUpForm.value
+    if (this.signUpForm.valid) {
+      this.dataSignUp.emit(data);
+    }
+   
   }
 }

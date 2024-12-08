@@ -1,15 +1,17 @@
-<p>home works!</p>
 
-<app-button [label]="label" (click)="onClick()" />
-<a [routerLink]="['/about']">To about</a>
-<div>{{ dataFromChild }}</div>
-<!-- <div *ngFor="let item of res">
-   {{ item.id}}. {{item.title}}
-</div> -->
-
-<div>
-  @for(item of res; track item.id){ @if(item.id % 2 === 0 ){
-  <div>{{ item.id }}. {{ item.title }}</div>
-  } }
-</div>
+<section>
+  <app-button [label]="label" (click)="onClick()" />
+  <a [routerLink]="['/about']">To about</a>
+  <div>{{ dataFromChild }}</div>
+  <!-- <div *ngFor="let item of res">
+     {{ item.id}}. {{item.title}}
+  </div> -->
+  
+  <div>
+    @for(item of res; track item.id){ @if(item.id % 2 === 0 ){
+    <div>{{ item.id }}. {{ item.title }}</div>
+    } }
+  </div>
+  
+</section>
 

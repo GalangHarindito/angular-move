@@ -14,6 +14,8 @@ import { authReducer } from './store/reducers/auth.reducer';
 import { loadingReducer } from './store/reducers/loading.reducer';
 import { profileReducer } from './store/reducers/profile/profile.reducer';
 import { ProfileEffects } from './service/profile/profile.effect';
+import { signupReducer } from './store/reducers/signup/signup.reducer';
+import { SignupEffects } from './service/signup/signup.effects';
 
 
 export const appConfig: ApplicationConfig = {
@@ -26,10 +28,11 @@ export const appConfig: ApplicationConfig = {
     provideStore({
       auth: authReducer,
       loading: loadingReducer,
-      profile: profileReducer
+      profile: profileReducer,
+      signup: signupReducer
       // error: errorReducer,
     }),
-    provideEffects([AuthEffects, ProfileEffects]),
+    provideEffects([AuthEffects, ProfileEffects, SignupEffects]),
     // provideStore({ auth: authReducer, loading: loadingReducer, error: errorReducer }),
     // provideEffects([AuthEffects]),
     // { provide: HTTP_INTERCEPTORS, useValue: authInterceptor, multi: true },

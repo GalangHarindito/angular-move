@@ -17,6 +17,7 @@ import { UserModel } from '../../../service/signin/model';
 import { Observable, Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../utils/app.state';
+import { signInFailure } from '../../../store/action/auth.action';
 
 @Component({
   selector: 'app-signin-form',
@@ -62,7 +63,7 @@ export class SigninFormComponent {
       password: ['', Validators.required],
     });
     this.loading$ = this.store.select((state) => state.loading);
-    this.error$ = this.store.select(state => state.auth?.error?.statusCode);
+    this.error$ = this.store.select(state => state.auth?.error?.message);
   }
 
   signInData: SignInFormModel[] = [
@@ -103,6 +104,7 @@ export class SigninFormComponent {
   onSubmit(data: UserModel) {
     if (this.signInForm.valid) {
       this.dataSignIn.emit(data);
+      this.store.dispatch(signInFailure({ error: '' }));
     }
   }
 }

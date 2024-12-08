@@ -1,7 +1,15 @@
-<div class="wrapper-signup">
-  <h2 class="title">Sign Up!</h2>
-    <div class="content-signup">
-        <app-signup-form></app-signup-form>
+<section class="wrapper-signup">
+  <div class="signin-bg"></div>
+  <div class="content-signup">
+    <app-signup-form (dataSignUp)="onSubmit($event)"></app-signup-form>
+    <div class="signin-box-text">
+      <p>
+        <i><strong>Sign up</strong></i> now to harness your data’s full potential with our all-in-one
+        analytics dashboard—track, analyze, and act with precision!
+      </p>
     </div>
- 
-</div>
+  </div>
+  <div class="copyright">
+    Photo by <a href="https://unsplash.com/@kctinman?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Shane McLendon</a> on <a href="https://unsplash.com/photos/aerial-photography-of-dump-trucks-EN1tF2EG-50?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+   </div>
+</section>

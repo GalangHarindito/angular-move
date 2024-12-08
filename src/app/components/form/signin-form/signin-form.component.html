@@ -1,8 +1,8 @@
 <div class="wrapper-signin-form">
-  <div *ngIf="error$" class="alert-position">
+  <div *ngIf="error$">
     <app-alert [class]="danger" [message]="(error$ | async) || ''" />
   </div>
-  <h3>Sign In</h3>
+  <h2>Sign In</h2>
   <form class="form-signin" [formGroup]="signInForm" (submit)="onSubmit(value)">
     @for(item of signInData; track item.name){ @if(item.name === "email"){
     <app-input

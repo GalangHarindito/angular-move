@@ -1,4 +1,5 @@
 <div class="wrapper-signup-form">
+  <h2 class="title">Sign Up!</h2>
   <h3>Please fill this form below</h3>
 
   <form class="form-signup" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
@@ -39,6 +40,7 @@
       [label]="submit.label"
       [type]="submit.type"
       [disabled]="buttonDisabled"
+      [loading]="(loading$ | async) || false"
     />
   </form>
 </div>

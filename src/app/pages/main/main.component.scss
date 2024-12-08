@@ -1,0 +1,12 @@
+.page {
+  display: grid;
+  grid-template-rows: 0.2fr 1fr;
+
+  .navbar {
+    // position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: 1;
+  }
+}

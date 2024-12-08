@@ -30,7 +30,7 @@ export const errorModel : ModelError[] = [
 
 const errorCode : ModelErrorCode[] = [
   {
-    code: 401,
+    code: 400,
     message: 'Email or Password wrong!',
   }
 ]

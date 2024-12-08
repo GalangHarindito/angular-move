@@ -1,5 +1,6 @@
 import { AuthState } from "../store/reducers/auth.reducer";
 import { ProfileState } from "../store/reducers/profile/profile.reducer";
+import { SignUpState } from "../store/reducers/signup/signup.reducer";
 
 export interface AppState {
   auth: AuthState;
@@ -10,6 +11,12 @@ export interface AppState {
 
 export interface UserProfileState {
   profile: ProfileState;
+  loading: boolean;
+  error: any;
+}
+
+export interface UserSignUpState {
+  message: SignUpState;
   loading: boolean;
   error: any;
 }

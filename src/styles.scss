@@ -6,7 +6,31 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "montserrat";
+  src: url("./assets/fonts/Montserrat-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "montserrat_bold";
+  src: url("./assets/fonts/Montserrat-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+
+
 body {
   font-family: "poppins", sans-serif;
   background-color: #fff;
+  margin: 0;
+}
+
+
+.copyright{
+  position: absolute;
+  bottom: 2%;
+  left: 0;
 }

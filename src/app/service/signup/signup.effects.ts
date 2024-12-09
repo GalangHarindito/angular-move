@@ -31,7 +31,7 @@ export class SignupEffects {
           })
           .pipe(
             map((response) =>
-              signUpSuccess(response.message)
+              signUpSuccess(response)
             ),
             catchError((error) =>
               scheduled([signUpFailure({ error })], asyncScheduler)

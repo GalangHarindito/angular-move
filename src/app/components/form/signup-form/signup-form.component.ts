@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, DoCheck, EventEmitter, forwardRef, Output } from '@angular/core';
+import { Component, DoCheck, EventEmitter, forwardRef, OnChanges, Output } from '@angular/core';
 import { InputComponent } from '../../../shared/components/input/input/input.component';
 import { InputModel, ButtonSignUp, SignUpForm, CheckBoxConsent } from './model';
 import {
@@ -15,9 +15,12 @@ import { ConfirmPasswordValidator } from '../../../utils/validator';
 import { CheckboxComponent } from '../../../shared/components/checkbox/checkbox.component';
 import { PasswordComponent } from '../../../shared/components/input/password/password.component';
 import { UserRegister } from '../../../service/signup/model';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { UserSignUpState } from '../../../utils/app.state';
+import { RouterLink } from '@angular/router';
+import { AlertComponent } from '../../../shared/components/warning/alert/alert.component';
+import { signUpFailure } from '../../../store/action/signup.action';
 
 @Component({
   selector: 'app-signup-form',
@@ -28,7 +31,9 @@ import { UserSignUpState } from '../../../utils/app.state';
     ButtonComponent,
     ReactiveFormsModule,
     CheckboxComponent,
-    PasswordComponent
+    PasswordComponent,
+    RouterLink,
+    AlertComponent
   ],
   templateUrl: './signup-form.component.html',
   styleUrl: './signup-form.component.scss',
@@ -54,6 +59,11 @@ export class SignupFormComponent {
   checkBoxDisabled: boolean = true;
   loading$: Observable<boolean>;
   @Output() dataSignUp = new EventEmitter<UserRegister>();
+  error$!: Observable<string>;
+  danger: string = 'danger';
+  errorSubscription: Subscription = new Subscription();
+  alertVisible: boolean = true;
+  
 
   constructor(private formBuilder: FormBuilder, private store: Store<UserSignUpState>) {
     this.signUpForm = this.formBuilder.group(
@@ -66,7 +76,7 @@ export class SignupFormComponent {
             Validators.maxLength(50),
           ]),
         ],
-        lastName: ['', Validators.required],
+        lastName: [],
         email: [
           '',
           Validators.compose([Validators.required, Validators.email]),
@@ -79,6 +89,12 @@ export class SignupFormComponent {
       { validator: ConfirmPasswordValidator.MatchPassword }
     );
     this.loading$ = this.store.select((state) => state.loading);
+    this.error$ = this.store.select(state => state.signup?.error?.message);
+    this.errorSubscription = this.error$.subscribe(errorMessage => {
+      if (errorMessage) {
+        this.showAlert(errorMessage);
+      }
+    });
   }
 
   get value(): SignUpForm {
@@ -97,6 +113,17 @@ export class SignupFormComponent {
       this.buttonDisabled = true
     }
   }
+
+  showAlert(message: string) {
+    this.errorMessage = message; 
+    this.alertVisible = true; 
+
+    // Hide the alert after 2 seconds
+    setTimeout(() => {
+      this.alertVisible = false; 
+      this.store.dispatch(signUpFailure({ error: '' }));
+  },2000)
+}
 
   public inputInformation: InputModel[] = [
     {

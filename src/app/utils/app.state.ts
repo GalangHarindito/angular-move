@@ -16,7 +16,7 @@ export interface UserProfileState {
 }
 
 export interface UserSignUpState {
-  message: SignUpState;
+  signup: SignUpState;
   loading: boolean;
   error: any;
 }

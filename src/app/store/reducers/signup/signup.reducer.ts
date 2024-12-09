@@ -3,17 +3,20 @@ import { signUpSuccess, signUpFailure } from '../../action/signup.action';
 
 export interface SignUpState {
   message: string | null;
+  error: any;
 }
 
 export const initialState: SignUpState = {
-  message: null
+  message: null,
+  error: null
 };
 
 export const signupReducer = createReducer(
   initialState,
   on(signUpSuccess, (state, { message }) => ({
     ...state,
-    message
+    message,
+    error: null
   })),
   on(signUpFailure, (state, { error }) => ({
     ...state,

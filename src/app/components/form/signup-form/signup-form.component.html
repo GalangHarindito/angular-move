@@ -1,4 +1,7 @@
 <div class="wrapper-signup-form">
+  <div *ngIf="alertVisible">
+    <app-alert [class]="danger" [message]="(error$ | async) || ''" />
+  </div>
   <h2 class="title">Sign Up!</h2>
   <h3>Please fill this form below</h3>
 
@@ -43,4 +46,6 @@
       [loading]="(loading$ | async) || false"
     />
   </form>
+
+  <p>already haven an account? <a routerLink="/signin">Sign In</a></p>
 </div>

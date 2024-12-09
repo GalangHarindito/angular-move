@@ -1,12 +1,20 @@
-.danger {
-  padding: 0.7rem;
-  background-color: red;
-  color: white;
-  border-radius: 0.2rem;
-  font-size: 0.9rem;
-  text-align: center;
-  font-weight: 600;
+.alert{
+    padding: 0.7rem;
+    border-radius: 0.2rem;
+    font-size: 0.9rem;
+    text-align: center;
+    font-weight: 600;
+    opacity: 0;
 }
+.danger {
+  background-color: #ff5757;
+  color: white;
+}
+
+.success {
+    background-color: #5aff5a;
+    color: white;
+  }
 
 .text {
   margin: 0;
@@ -19,7 +27,6 @@
     transform: translateX(-50%);
     width: 16rem;
     animation: slideFromTop 0.5s ease-out forwards;
-    opacity: 0;
     }
 
     @keyframes slideFromTop {

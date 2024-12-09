@@ -18,6 +18,7 @@ import { Observable, Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../utils/app.state';
 import { signInFailure } from '../../../store/action/auth.action';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-signin-form',
@@ -29,6 +30,7 @@ import { signInFailure } from '../../../store/action/auth.action';
     InputComponent,
     PasswordComponent,
     ReactiveFormsModule,
+    RouterLink
   ],
   templateUrl: './signin-form.component.html',
   styleUrl: './signin-form.component.scss',
